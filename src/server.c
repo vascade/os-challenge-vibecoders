@@ -1,13 +1,6 @@
 #include "common.h"
 
 int server(int port) {
-    // Setup the socket
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <port>\n", argv[0]);
-        return EXIT_FAILURE;
-    }
-
-    int port = atoi(argv[1]);
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
         perror("Failed to create socket!");

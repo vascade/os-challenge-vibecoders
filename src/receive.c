@@ -1,12 +1,12 @@
 #include "common.h"
 
-void receive(int *client_fd) {
+void receive(int client_fd) {
     // Read exactly MSG_LEN bytes, since TCP may deliver them in pieces
     unsigned char buffer[MSG_LEN];
     size_t total = 0;
     while (total < MSG_LEN) {
         // Setup variable n to store what we read from the client
-        ssize_t n = read(*client_fd, buffer + total, MSG_LEN - total); // We use ssize_t cause its signed, and if we read -1 there is an error.
+        ssize_t n = read(client_fd, buffer + total, MSG_LEN - total); // We use ssize_t cause its signed, and if we read -1 there is an error.
         if (n < 0) {
             perror("Failed to read data from client!");
             exit(EXIT_FAILURE);
@@ -29,6 +29,6 @@ void receive(int *client_fd) {
 
         // Logic for queing based on priority
 
-        send(client_fd, start_num, end_num);
+        send_data(client_fd, start_num, end_num, &hash);
     }
 }

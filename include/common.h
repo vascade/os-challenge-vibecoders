@@ -8,12 +8,9 @@
 #include <netinet/in.h> // for the sockaddr_in struct
 #include <endian.h> // for the htobe64() and be64toh() function. Linux only.
 
-#define LONESHA256_STATIC
-#include "lonesha256.h"
-
 #define BACKLOG 100
 #define MSG_LEN 49
 
 int server(int port);
-int receive(int *client_fd);
-void send(int **client_fd, int start_num, int end_num);
+void receive(int client_fd);
+void send_data(int client_fd, int start_num, int end_num);
