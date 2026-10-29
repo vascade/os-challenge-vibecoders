@@ -1,7 +1,6 @@
 #include "common.h"
 
-int server(int port) {
-    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+int server(int server_fd, int port) {
     if (server_fd < 0) {
         perror("Failed to create socket!");
         exit(EXIT_FAILURE);

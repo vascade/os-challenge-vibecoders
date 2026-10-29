@@ -8,10 +8,11 @@ int main(int argc, char const *argv[]) {
     }
 
     int port = atoi(argv[1]);
-    int client_fd = server(port);
+    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+
+    int client_fd = server(server_fd, port);
     receive(&client_fd);
     
-    close(server_fd);
     return 0;
 }
 

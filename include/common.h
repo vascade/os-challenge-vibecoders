@@ -11,6 +11,6 @@
 #define BACKLOG 100
 #define MSG_LEN 49
 
-int server(int port);
+int server(int server_fd, int port);
 void receive(int client_fd);
-void send_data(int client_fd, int start_num, int end_num);
+void send_data(int client_fd, int start_num, int end_num, unsigned char *hash[32]);
