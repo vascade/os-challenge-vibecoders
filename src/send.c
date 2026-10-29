@@ -1,6 +1,6 @@
 #include "common.h"
 
-void send(int **client_fd, int start_num, int end_num) {
+void send(int *client_fd, int start_num, int end_num) {
     // Encrypt and compare.
     unsigned char out[32];
 
@@ -11,7 +11,7 @@ void send(int **client_fd, int start_num, int end_num) {
             printf("TEST %" PRIu64 ": PASSED\n", i);
 
             const uint64_t ret_num = htobe64(i);
-            write(**client_fd, &ret_num, sizeof(ret_num));
+            write(client_fd, &ret_num, sizeof(ret_num));
             break;
         }
     }

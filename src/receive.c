@@ -29,5 +29,6 @@ void receive(int *client_fd) {
 
         // Logic for queing based on priority
 
-        send(&client_fd, start_num, end_num);
+        send(client_fd, start_num, end_num);
+    }
 }

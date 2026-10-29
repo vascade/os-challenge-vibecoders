@@ -8,7 +8,7 @@ int main(int argc, char const *argv[]) {
     }
 
     int port = atoi(argv[1]);
-    client_fd = server(port);
+    int client_fd = server(port);
     receive(&client_fd);
     
     close(server_fd);
