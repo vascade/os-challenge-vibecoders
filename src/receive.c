@@ -28,7 +28,7 @@ void receive(int client_fd) {
         end_num = be64toh(end_num);
 
         // Logic for queing based on priority
-
+        printf("Now sending data");
         send_data(client_fd, start_num, end_num, &hash);
     }
 }
