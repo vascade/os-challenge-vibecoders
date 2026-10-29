@@ -28,7 +28,7 @@ int server(int server_fd, int port) {
     // We keep listening on server_fd, and create a new client_fd on succesful connection.
     // This new client_fd will have its own attributes such as adress and stuff, and we store them in the same struct as before
     int connected = 0;
-    while (connected) {
+    while (!connected) {
         struct sockaddr_in client_addr; // Setup empty struct that will be filed with client data
         socklen_t client_addr_len = sizeof(client_addr);
 
