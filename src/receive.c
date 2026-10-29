@@ -13,9 +13,8 @@ void receive(int client_fd) {
         }
         if (n == 0) break; // Client closed the connection early
         total += n;
-    }
-    
-    if (total == MSG_LEN) { // only parse packages with the correct length.
+
+        if (total == MSG_LEN) { // only parse packages with the correct length.
         // Setup vars for splitting the buffer up
         unsigned char hash[32];
         uint64_t start_num, end_num;
@@ -29,5 +28,6 @@ void receive(int client_fd) {
 
         // Logic for queing based on priority
         send_data(client_fd, start_num, end_num, &hash);
+        }
     }
 }
