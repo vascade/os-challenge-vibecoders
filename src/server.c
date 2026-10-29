@@ -34,7 +34,7 @@ int server(int server_fd, int port) {
 
         int client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_len); //Create a new file descriptor for the client and check for errors.
 
-        if (client_fd < 0) {
+        if (client_fd <= 0) {
             perror("Failed to accept connection!");
             exit(EXIT_FAILURE);
         }
