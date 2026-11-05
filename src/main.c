@@ -15,9 +15,8 @@ int main(int argc, char const *argv[]) {
     int running = 1;
     while (running) {
         receive(client_fd);
-
     }
-    
+
     close(client_fd);
     return 0;
 }
