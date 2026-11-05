@@ -1,3 +1,5 @@
+#include "common.h"
+
 int main(int argc, char const *argv[]) {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <port>\n", argv[0]);
