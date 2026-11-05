@@ -18,5 +18,5 @@ void send_data(int client_fd, uint64_t start_num, uint64_t end_num, unsigned cha
             break;
         }
     }
-    close(client_fd);
+    return;
 }

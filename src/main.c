@@ -18,6 +18,7 @@ int main(int argc, char const *argv[]) {
 
     }
     
+    close(client_fd);
     return 0;
 }
 

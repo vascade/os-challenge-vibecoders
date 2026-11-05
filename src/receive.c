@@ -28,6 +28,7 @@ void receive(int client_fd) {
 
         // Logic for queing based on priority
         send_data(client_fd, start_num, end_num, &hash);
+        return;
         }
     }
 }
