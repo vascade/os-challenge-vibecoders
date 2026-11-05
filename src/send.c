@@ -1,0 +1,22 @@
+#include "common.h"
+
+#define LONESHA256_STATIC
+#include "lonesha256.h"
+
+void send_data(int client_fd, uint64_t start_num, uint64_t end_num, unsigned char *hash[32]) {
+    // Encrypt and compare.
+    unsigned char out[32];
+
+    for (uint64_t i = start_num; i <= end_num; i++) {
+        if (lonesha256(out, &i, sizeof(i))) {
+            printf("TEST %" PRIu64 ": ERROR\n", i);
+        } else if (memcmp(out, hash, sizeof(out)) == 0) {
+            printf("TEST %" PRIu64 ": PASSED\n", i);
+
+            const uint64_t ret_num = htobe64(i);
+            write(client_fd, &ret_num, sizeof(ret_num));
+            break;
+        }
+    }
+    return;
+}
