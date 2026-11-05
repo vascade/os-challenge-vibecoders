@@ -11,7 +11,12 @@ int main(int argc, char const *argv[]) {
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
 
     int client_fd = server(server_fd, port);
-    receive(client_fd);
+
+    int running = 1;
+    while (running) {
+        receive(client_fd);
+
+    }
     
     return 0;
 }
