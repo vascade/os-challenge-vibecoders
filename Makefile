@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O3 -Wall -Wextra -Iinclude
+CFLAGS = -O3 -Wall -Wextra -Iinclude -pthread
  
 TARGET = server
 SRC = $(wildcard src/*.c)

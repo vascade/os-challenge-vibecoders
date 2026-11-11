@@ -4,9 +4,12 @@
 #include <inttypes.h> // for PRIu64, the printf format for uint64_t
 #include <string.h> // for memcpy() and memset()
 #include <unistd.h> // for read() and close()
+#include <pthread.h>
 #include <sys/socket.h>
 #include <netinet/in.h> // for the sockaddr_in struct
 #include <endian.h> // for the htobe64() and be64toh() function. Linux only.
+
+#include "queue.h" 
 
 #define BACKLOG 100
 #define MSG_LEN 49
