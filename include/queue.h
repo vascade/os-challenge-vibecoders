@@ -1,6 +1,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <stdint.h>
+
 typedef struct job {
     int fd;
     uint8_t hash[32];
