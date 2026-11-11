@@ -21,12 +21,30 @@ void receive(int client_fd)
             {
                 fprintf(stderr, "Client closed in the middle of a packet\n");
             }
+            close(client_fd);  // no job was created, so nobody will use it. 
             return;
         }
         total += n;
     }
 
+
+    job_t *j = malloc(sizeof *j);
+    if (!j) {
+        close(client_fd);
+        return;
+    }
+    uint64_t start_num, end_num;
+    memcpy(j->hash, buffer, 32);
+    memcpy(&start_num, buffer + 32, 8);
+    memcpy(&end_num, buffer + 40, 8);
+    j->start = be64toh(start_num);
+    j->end = be64toh(end_num);
+    j->prio = buffer[48];
+    j->fd = client_fd;
+
+    queue_push(j);
     // We have a complete packet, so parse it
+    /*
     unsigned char hash[32];
     uint64_t start_num, end_num;
 
@@ -39,4 +57,5 @@ void receive(int client_fd)
     // priority = buffer[48]; // use this if you need it for queueing
 
     send_data(client_fd, start_num, end_num, hash);
+    */
 }
